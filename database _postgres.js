@@ -7,8 +7,10 @@ export class Database {
     async list(search) {
         let videos 
 
-        if (search){
-            videos = awaitsql`SELECT * FROM videos WHERE title ilike "%${search}%"`
+        if (search) {
+            videos = await sql`SELECT * FROM videos WHERE title ILIKE ${'%' + search + '%'}`;
+          
+
         }else{
             videos = await sql`SELECT * FROM videos`
         }
